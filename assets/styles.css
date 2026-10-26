@@ -33,8 +33,9 @@ body {
   min-width: 320px;
   color: var(--ink);
   background:
-    radial-gradient(circle at 6% 10%, rgba(169, 210, 255, 0.36), transparent 25rem),
-    radial-gradient(circle at 92% 9%, rgba(255, 182, 206, 0.32), transparent 27rem),
+    radial-gradient(circle at 5% 7%, rgba(157, 204, 255, 0.5), transparent 28rem),
+    radial-gradient(circle at 95% 5%, rgba(255, 165, 198, 0.42), transparent 31rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 46rem),
     var(--bg);
   font-family: var(--font);
   font-weight: 400;
@@ -214,9 +215,34 @@ svg {
   grid-template-columns: minmax(0, 0.78fr) minmax(470px, 1.22fr);
   align-items: center;
   gap: 50px;
-  min-height: 860px;
+  min-height: 900px;
   padding-top: 122px;
   padding-bottom: 86px;
+}
+
+.hero::before {
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  z-index: -1;
+  width: 520px;
+  height: 520px;
+  border: 1px solid rgba(30, 34, 41, 0.08);
+  border-radius: 50%;
+  content: "";
+}
+
+.hero::after {
+  position: absolute;
+  bottom: 10%;
+  left: 37%;
+  z-index: -1;
+  width: 170px;
+  height: 170px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px dashed rgba(30, 34, 41, 0.1);
+  border-radius: 50%;
+  content: "";
 }
 
 .kicker,
@@ -318,7 +344,7 @@ svg {
 .hero-visual {
   position: relative;
   display: grid;
-  min-height: 650px;
+  min-height: 700px;
   place-items: center;
   --depth-x: 0px;
   --depth-y: 0px;
@@ -326,31 +352,67 @@ svg {
 
 .orb-aura {
   position: absolute;
-  width: min(620px, 90%);
+  width: min(680px, 96%);
   aspect-ratio: 1;
-  background: conic-gradient(from 190deg, var(--blue-soft), var(--pink-soft), #f0ebff, var(--blue-soft));
+  background: conic-gradient(from 190deg, #b8dcff, #ffd8e5, #ece4ff, #ffd8e5, #b8dcff);
   border-radius: 50%;
   filter: blur(14px);
-  opacity: 0.8;
+  opacity: 0.92;
+}
+
+.hero-photo {
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid rgba(30, 34, 41, 0.14);
+  box-shadow: 0 20px 55px rgba(45, 54, 80, 0.13);
+  transition: transform 0.25s ease-out;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.hero-photo-game {
+  top: 4%;
+  right: 0;
+  width: 49%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  transform: rotate(6deg) translate(calc(var(--depth-x) * -0.45), calc(var(--depth-y) * -0.45));
+}
+
+.hero-photo-cozy {
+  bottom: 2%;
+  left: 1%;
+  width: 34%;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  transform: rotate(-8deg) translate(calc(var(--depth-x) * 0.55), calc(var(--depth-y) * 0.55));
 }
 
 .identity-orb {
   position: relative;
   display: grid;
-  width: min(490px, 75vw);
+  width: min(455px, 73vw);
   aspect-ratio: 1;
   place-items: center;
   overflow: hidden;
   color: var(--ink);
   background:
     radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.95), transparent 24%),
-    radial-gradient(circle at 72% 73%, rgba(199, 188, 255, 0.72), transparent 34%),
-    linear-gradient(138deg, #a9d2ff 0%, #d4e7ff 40%, #ffd2e0 100%);
-  border: 1px solid rgba(30, 34, 41, 0.18);
+    radial-gradient(circle at 72% 73%, rgba(199, 188, 255, 0.82), transparent 34%),
+    linear-gradient(138deg, #94c8ff 0%, #d0e4ff 40%, #ffc6da 100%);
+  border: 1px solid rgba(30, 34, 41, 0.2);
   border-radius: 50%;
   box-shadow:
     inset 0 0 0 12px rgba(255, 255, 255, 0.22),
-    0 35px 90px rgba(68, 76, 112, 0.16);
+    0 35px 95px rgba(68, 76, 112, 0.22);
   transform: translate(var(--depth-x), var(--depth-y));
   transition: transform 0.25s ease-out;
 }
@@ -367,7 +429,7 @@ svg {
   position: relative;
   z-index: 2;
   margin-top: -24px;
-  font-size: clamp(160px, 19vw, 235px);
+  font-size: clamp(155px, 17vw, 220px);
   font-weight: 500;
   letter-spacing: -0.16em;
   line-height: 1;
@@ -497,7 +559,58 @@ svg {
   fill: var(--blue);
 }
 
+.play-sticker {
+  position: absolute;
+  right: 4%;
+  bottom: 10%;
+  z-index: 5;
+  display: grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 1px solid rgba(30, 34, 41, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 12px 28px rgba(45, 54, 80, 0.11);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  transform: rotate(9deg);
+}
+
+.visual-ribbon {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(169, 210, 255, 0.7);
+  border-top: 1px solid rgba(30, 34, 41, 0.09);
+  border-bottom: 1px solid rgba(30, 34, 41, 0.09);
+  contain: paint;
+}
+
+.ribbon-track {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: max-content;
+  padding: 11px 0;
+  animation: ribbon-scroll 24s linear infinite;
+}
+
+.ribbon-track span {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.ribbon-track i {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 10px;
+  font-style: normal;
+}
+
 .work-section {
+  position: relative;
   padding-top: 80px;
   padding-bottom: 116px;
 }
@@ -533,7 +646,7 @@ svg {
 
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
   gap: 18px;
 }
 
@@ -541,11 +654,19 @@ svg {
   position: relative;
   overflow: hidden;
   padding: 8px;
-  background: rgba(255, 253, 251, 0.75);
+  background: rgba(255, 253, 251, 0.82);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   box-shadow: 0 12px 35px rgba(45, 54, 80, 0.055);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:nth-child(2) {
+  background: rgba(255, 236, 242, 0.82);
+}
+
+.project-card:nth-child(3) {
+  background: rgba(239, 246, 255, 0.86);
 }
 
 .project-card:hover,
@@ -575,9 +696,26 @@ svg {
 .cover-image {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1.17 / 1;
+  aspect-ratio: 1.08 / 1;
   background: var(--blue-soft);
   border-radius: 14px;
+}
+
+.cover-index {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  color: var(--ink);
+  background: rgba(255, 253, 251, 0.82);
+  border-radius: 50%;
+  font-size: 8px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
 }
 
 .cover-image img {
@@ -651,7 +789,7 @@ svg {
 .analysis-cover {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 1.17 / 1;
+  aspect-ratio: 1.08 / 1;
   background:
     radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.95), transparent 25%),
     linear-gradient(145deg, #c9e2ff, #e9e2ff 49%, #ffdce8);
@@ -722,25 +860,39 @@ svg {
 }
 
 .about-card {
+  position: relative;
   display: grid;
   grid-template-columns: 240px 1fr;
   align-items: center;
   gap: 58px;
   padding: 47px 54px;
-  background: rgba(228, 240, 255, 0.7);
+  background:
+    radial-gradient(circle at 10% 12%, rgba(255, 255, 255, 0.72), transparent 17rem),
+    linear-gradient(120deg, rgba(210, 231, 255, 0.92), rgba(255, 227, 237, 0.88));
   border: 1px solid rgba(30, 34, 41, 0.1);
   border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(45, 54, 80, 0.07);
+}
+
+.about-visual {
+  position: relative;
+  display: grid;
+  width: 215px;
+  height: 215px;
+  place-items: center;
+  margin-inline: auto;
 }
 
 .about-mark {
+  position: relative;
+  z-index: 2;
   display: grid;
   width: 190px;
   height: 190px;
   place-items: center;
-  margin-inline: auto;
   background:
     radial-gradient(circle at 32% 28%, white, transparent 25%),
-    linear-gradient(145deg, var(--pink), #e4d9ff 56%, var(--blue));
+    linear-gradient(145deg, #ffacd0, #e4d9ff 56%, #92c5ff);
   border-radius: 50%;
   font-size: 90px;
   font-weight: 500;
@@ -749,6 +901,31 @@ svg {
   box-shadow:
     inset 0 0 0 8px rgba(255, 255, 255, 0.2),
     0 20px 55px rgba(45, 54, 80, 0.12);
+}
+
+.about-ring {
+  position: absolute;
+  border: 1px solid rgba(30, 34, 41, 0.12);
+  border-radius: 50%;
+}
+
+.ring-a {
+  inset: 0;
+}
+
+.ring-b {
+  inset: -15px;
+  border-style: dashed;
+}
+
+.about-spark {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  z-index: 3;
+  color: var(--yellow);
+  font-size: 27px;
+  text-shadow: 0 2px 0 rgba(30, 34, 41, 0.12);
 }
 
 .about-copy {
@@ -792,10 +969,12 @@ svg {
   overflow: hidden;
   padding: 55px 58px 45px;
   background:
-    radial-gradient(circle at 90% 15%, rgba(255, 255, 255, 0.65), transparent 18rem),
-    linear-gradient(125deg, #ffd4e1, #e6edff 53%, #b9d9ff);
+    radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.72), transparent 19rem),
+    radial-gradient(circle at 12% 92%, rgba(255, 255, 255, 0.34), transparent 16rem),
+    linear-gradient(125deg, #ffc7d8, #f0e4ff 45%, #a9d2ff);
   border: 1px solid rgba(30, 34, 41, 0.1);
   border-radius: var(--radius-lg);
+  box-shadow: 0 24px 70px rgba(45, 54, 80, 0.09);
 }
 
 .contact-card h2 {
@@ -840,6 +1019,10 @@ svg {
   border: 1px dashed rgba(30, 34, 41, 0.12);
   border-radius: 50%;
   content: "";
+}
+
+.contact-sun + * {
+  position: relative;
 }
 
 .contact-sun::after {
@@ -956,6 +1139,12 @@ svg {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes ribbon-scroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .reveal.is-visible {
