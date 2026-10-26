@@ -481,6 +481,7 @@ svg {
   position: relative;
   min-width: 0;
   perspective: 1000px;
+  clip-path: inset(-90px -4px -90px -4px);
 }
 
 .stage-orbit {
@@ -491,12 +492,12 @@ svg {
 }
 
 .orbit-one {
-  inset: -70px -88px;
+  inset: -70px -20px;
   transform: rotate(-15deg);
 }
 
 .orbit-two {
-  inset: -12px -24px;
+  inset: -12px -20px;
   border-style: dashed;
   opacity: 0.55;
   transform: rotate(18deg);
@@ -789,12 +790,12 @@ svg {
 
 .tag-top {
   top: 12%;
-  right: -35px;
+  right: -4px;
 }
 
 .tag-bottom {
   bottom: 10%;
-  left: -41px;
+  left: -4px;
   animation-delay: -2.5s;
 }
 
@@ -1932,6 +1933,10 @@ svg {
 }
 
 @media (max-width: 1080px) {
+  .stage-orbit {
+    display: none;
+  }
+
   .hero {
     grid-template-columns: minmax(0, 0.9fr) minmax(400px, 1.1fr);
     gap: 36px;
