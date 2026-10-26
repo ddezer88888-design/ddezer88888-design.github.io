@@ -4,7 +4,7 @@ const navLinks = document.querySelector("[data-nav-links]");
 const tiltTarget = document.querySelector("[data-tilt]");
 
 function updateHeader() {
-  header?.classList.toggle("is-scrolled", window.scrollY > 12);
+  header?.classList.toggle("is-scrolled", window.scrollY > 16);
 }
 
 function closeMenu() {
@@ -41,9 +41,8 @@ if ("IntersectionObserver" in window) {
         revealObserver.unobserve(entry.target);
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -40px" },
+    { threshold: 0.1, rootMargin: "0px 0px -36px" },
   );
-
   revealItems.forEach((item) => revealObserver.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
@@ -71,14 +70,17 @@ document.querySelectorAll("[data-year]").forEach((node) => {
 });
 
 if (tiltTarget && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  const consoleCard = tiltTarget.querySelector(".hero-console");
+  const mainPhoto = tiltTarget.querySelector(".photo-main");
+  const smallPhoto = tiltTarget.querySelector(".photo-small");
   tiltTarget.addEventListener("pointermove", (event) => {
     const bounds = tiltTarget.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - 0.5;
     const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-    consoleCard.style.transform = `rotateY(${x * 4 - 2}deg) rotateX(${-y * 4 + 1}deg) translateY(-2px)`;
+    mainPhoto.style.transform = `rotate(${2.2 + x * 2.2}deg) translate(${x * 5}px, ${y * 5}px)`;
+    smallPhoto.style.transform = `rotate(${-6 + x * 2}deg) translate(${-x * 4}px, ${-y * 4}px)`;
   });
   tiltTarget.addEventListener("pointerleave", () => {
-    consoleCard.style.transform = "";
+    mainPhoto.style.transform = "";
+    smallPhoto.style.transform = "";
   });
 }
